@@ -36,3 +36,13 @@ Vector* cross_product(Vector v1 , Vector v2){
 
     return &v3; 
 }
+
+float dot_prod(Vector a, Vector b){
+    float sum = 0.0;
+    if(a.dimension == b.dimension){
+        for(int i = 0; i < a.dimension; i++){
+            sum += (a.list[i] * b.list[i]);
+        }
+    }
+    return sum;
+}
