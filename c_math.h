@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 typedef struct{
     float *list;
@@ -37,12 +38,31 @@ Vector* cross_product(Vector v1 , Vector v2){
     return &v3; 
 }
 
-float dot_prod(Vector a, Vector b){
-    float sum = 0.0;
-    if(a.dimension == b.dimension){
-        for(int i = 0; i < a.dimension; i++){
-            sum += (a.list[i] * b.list[i]);
+float dot_prod(Vector v1, Vector v2){
+    if(v1.dimension == v2.dimension){
+        float sum = 0.0;
+        for(int i = 0; i < v1.dimension; i++){
+            sum += (v1.list[i] * v2.list[i]);
         }
+        return sum;
     }
-    return sum;
+    else{
+        printf("The dimension of vectors must be the same.\n");
+        return 0.0;
+    }
+}
+
+double distance(Vector v1, Vector v2){
+    if(v1.dimension == v2.dimension){
+        double squared = 0.0;
+        for(int i = 0; i < v1.dimension; i++){
+            squared += pow((v1.list[i] - v2.list[i]), 2);
+        }
+        double dist = sqrt(squared);
+        return dist;
+    }
+    else{
+        printf("THe dimension of vecotrs must be the same.\n");
+        return 0.0;
+    }
 }
