@@ -66,3 +66,18 @@ double distance(Vector v1, Vector v2){
         return 0.0;
     }
 }
+
+Vector* vector_sub(Vector v1 , Vector v2){
+    if (v1.dimension!=v2.dimension){
+        return NULL;
+    }
+    Vector v3;
+    v3.dimension = v1.dimension;
+    v3.list = (float*) malloc(v1.dimension*sizeof(float));
+    for (int i=0; i< v1.dimension ;i++){
+        v3.list[i] = v1.list[i] - v2.list[i];
+    }
+
+    return &v3;
+
+}
